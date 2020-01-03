@@ -31,9 +31,16 @@ def play_cho_han_bet(bet_amnt, choice):
         return f'You chose {choice}. Congratulations you have won {bet_amnt}.'
     elif result != choice:
         return f'You chose {choice}. Bad luck you have lost -{bet_amnt}.'
-
+print("   ")
+print("Heads & Tails Results")
 print(play_heads_or_tails_bet(10, "Heads"))
+print(play_heads_or_tails_bet(10, "Tails"))
+
+print("   ")
+print("Cho Han Results")
 print(play_cho_han_bet(10, "Odd"))
+print(play_cho_han_bet(10, "Even"))
+
 
 diamonds = [2,3,4,5,6,7,8,9,10,11,12,13,14]
 hearts = [2,3,4,5,6,7,8,9,10,11,12,13,14]
@@ -102,4 +109,53 @@ def play_high_card(bet_amnt):
         return f'Program does not have logic for this {p1[0]} {p1[1]} against {p2[0]} {p2[1]}'
 
 # choose_card()
+print("   ")
+print("High Card Results")
 print(play_high_card(10))
+
+#Roulette
+wheel_spin = random.randint(1, 36)
+bet_amnt = 15
+odds = 35
+
+num_pick = 10
+col_pick_black = "black" #odd
+col_pick_red = "red" #even
+pick_even = "even"
+pick_odd = "odd"
+winnings = bet_amnt * odds
+
+def play_roulette(bet_amnt, bet_type):
+    if bet_type == num_pick:
+        if num_pick == wheel_spin:
+            return f'Winner on {num_pick}. You have won {winnings}.'
+        elif num_pick != wheel_spin:
+            return f'Unlucky on {num_pick}. You lost {bet_amnt}.'
+    elif bet_type == col_pick_black:
+        if wheel_spin % 2 == 0:
+            return f'Winner on {col_pick_black}. You have won {winnings}.'
+        elif wheel_spin % 2 != 0:
+            return f'Unlucky on {col_pick_black}. You lost {bet_amnt}.'
+    elif bet_type == col_pick_red:
+        if wheel_spin % 2 != 0:
+            return f'Winner on {col_pick_black}. You have won {winnings}.'
+        elif wheel_spin % 2 == 0:
+            return f'Unlucky on {col_pick_red}. You lost {bet_amnt}.'
+    elif bet_type == pick_even:
+            if wheel_spin % 2 == 0:
+                return f'Winner on {pick_even}. You have won {winnings}.'
+            elif wheel_spin % 2 != 0:
+                return f'Unlucky on {pick_even}. You lost {bet_amnt}.'
+    elif bet_type == pick_odd:
+            if wheel_spin % 2 != 0:
+                return f'Winner on {pick_odd}. You have won {winnings}.'
+            elif wheel_spin % 2 == 0:
+                return f'Unlucky on {pick_odd}. You lost {bet_amnt}.'
+
+print("   ")
+print("Roulette Results")
+print(play_roulette(bet_amnt, num_pick))
+print(play_roulette(bet_amnt, col_pick_black))
+print(play_roulette(bet_amnt, col_pick_red))
+print(play_roulette(bet_amnt, pick_even))
+print(play_roulette(bet_amnt, pick_odd))
